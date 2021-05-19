@@ -63,6 +63,7 @@ The description for each fields to fill in strapi's configuration UI are as foll
 | **timeout**                                  |             |
 | **Automatically generate thumbnails** (Beta) |             |
 
+
 Example:
 
 # OSS Region reference
