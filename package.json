@@ -1,11 +1,41 @@
 {
   "name": "strapi-provider-upload-uos",
   "version": "1.0.0",
-  "description": "",
+  "description": "Gooddoctor tfs(UOS) provider for strapi upload",
+  "homepage": "http://strapi.io",
+  "keywords": [
+    "upload",
+    "gooddoctor",
+    "tfs",
+    "strapi"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": {
+    "email": "yibu.wang@gooddoctor.com.sg",
+    "name": "yibu wang"
+  },
+  "strapi": {
+    "isProvider": true
+  },
+  "maintainers": [
+    {
+      "name": "yibu wang",
+      "email": "yibu.wang@gooddoctor.com.sg"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gooddoctor-yb/strapi-provider-upload-uos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gooddoctor-yb/strapi-provider-upload-uos/issues"
+  },
+  "engines": {
+    "node": ">= 10.0.0",
+    "npm": ">= 6.0.0"
+  },
   "license": "ISC"
 }
