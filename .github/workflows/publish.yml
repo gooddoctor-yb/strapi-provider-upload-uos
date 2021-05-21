@@ -1,25 +1,19 @@
-name: "publish"
+name: publish Node.js Package
 
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [created]
 
 jobs:
-  release:
-    name: "publish"
+  npm-publish:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2.1.1
-      - name: node
-        uses: actions/setup-node@v1.4.2
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org
-      - name: "publish"
-        run: npm publish --access ./
+          node-version: '12.x'
+          registry-url: https://registry.npmjs.org/
+      - run: npm install
+      - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-
-
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
