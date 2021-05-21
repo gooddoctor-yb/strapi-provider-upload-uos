@@ -2,7 +2,6 @@ const axios = require("axios");
 const qs = require("qs");
 const fs = require("fs");
 const path = require("path");
-const BufferStream = require("./BufferStream");
 
 const url = "http://srv.test.gooddoctor.co.id/uos";
 
@@ -14,43 +13,43 @@ module.exports = {
     return {
       upload: async (file) => {
         console.log("🚀 ~ file: index.js ~ line 14 ~ upload: ~ file", file);
-        const filepath = path.resolve(__dirname + "/1.png");
-        console.log(filepath);
-        fs.readFile(filepath, function (err, data) {
-          if (err) throw err;
 
-          // Encode to base64
-          // var encodedImage = new Buffer.from(data, "binary").toString("base64");
+        // const filepath = path.resolve(__dirname + "/1.png");
+        // console.log(filepath);
+        // fs.readFile(filepath, function (err, data) {
+        //   if (err) throw err;
+        const buf = Buffer.from(file);
 
-          // Decode from base64
-          // var decodedImage = new Buffer.from(encodedImage, "base64").toString("binary");
+        // Encode to base64
+        // var encodedImage = new Buffer.from(data, "binary").toString("base64");
 
-          const queryParams = qs.stringify({
-            p: "cms",
-            s: "0.33737177",
-            h: "b85b3a15ab21807d60aef04cd226cddaa53fbc57",
-            m: "u",
-            q: "12398ada3c16b3c7",
-          });
+        // Decode from base64
+        // var decodedImage = new Buffer.from(encodedImage, "base64").toString("binary");
 
-          // var fileBuffer = new Buffer.from(file.arrayBuffer, "binary");
-          var options = {
-            method: "post",
-            url: url + "?" + queryParams,
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            body: data,
-          };
-
-          return axios(options)
-            .then(function (response) {
-              console.log(JSON.stringify(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
+        const queryParams = qs.stringify({
+          p: "cms",
+          s: "0.33737177",
+          h: "b85b3a15ab21807d60aef04cd226cddaa53fbc57",
+          m: "u",
+          q: "12398ada3c16b3c7",
         });
+        var options = {
+          method: "post",
+          url: url + "?" + queryParams,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          body: buf,
+        };
+
+        return axios(options)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        // });
 
         // let buffer = Buffer.from(file);
 
