@@ -11,12 +11,11 @@ const url = "http://srv.test.gooddoctor.co.id/uos";
 
 module.exports = {
   init: (providerOptions) => {
-    console.log("🚀 ~ file: index.js ~ line 3 ~ init ~ providerOptions", providerOptions);
+   
     // init your provider if necessary
 
     return {
       upload: async (file) => {
-        // const buf = Buffer.from(file.buffer);
 
         const config = {
           p: "cms",

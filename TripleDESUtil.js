@@ -14,6 +14,9 @@ module.exports = {
     const plainText = decipher.doFinal(message);
     return plainText;
   },
+  encryptHex: function(q,key) {
+      
+  }
 };
 
 String.prototype.getBytes = function () {
