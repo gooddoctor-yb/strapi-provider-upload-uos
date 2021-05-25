@@ -1,34 +1,45 @@
 const axios = require("axios");
 
-const tfsURL = "https://static.test.gooddoctor.co.id/v1/tfs";
-
 module.exports = {
-  init: (providerOptions) => {
+  provider: "uos",
+  name: "Gooddoctor tfs",
+  auth: {
+    baseUrl: {
+      label: "Base URL to access",
+      type: "text",
+    },
+  },
+  init: (config) => {
     // init your provider if necessary
-
     return {
       upload: async (file) => {
-        ext = file.ext;
-        var options = {
-          method: "post",
-          url: tfsURL,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          data: file,
-        };
-        return axios(options)
-          .then(function (response) {
-            const url = tfsURL + "/" + response.data.TFS_FILE_NAME + file.ext;
-            console.log("🚀 ~ file: index.js ~ line 23 ~ url", url)
-            file.url = url;
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        return new Promise((resolve, reject) => {
+          const ext = file.ext;
+          // const path = file.path;
+          var options = {
+            method: "post",
+            url: config.baseUrl,
+            headers: {
+              "Content-Type": file.mime,
+            },
+            data: new Buffer.from(file.buffer),
+          };
+          axios(options)
+            .then(function (response) {
+              const url = config.baseUrl + "/" + response.data.TFS_FILE_NAME + ext;
+              file.url = url;
+              resolve();
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
       },
       delete(file) {
-        console.log("🚀 ~ file: index.js ~ line 15 ~ delete ~ file", file);
+        return new Promise((resolve, reject) => {
+          // not support delete file on tfs bucket
+          resolve();
+        });
       },
     };
   },
