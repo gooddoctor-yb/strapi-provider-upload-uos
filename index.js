@@ -20,7 +20,7 @@ module.exports = {
         return axios(options)
           .then(function (response) {
             const url = tfsURL + "/" + response.data.TFS_FILE_NAME + file.ext;
-            console.log("🚀 ~ file: index.js ~ line 44 ~ url", url);
+            console.log("🚀 ~ file: index.js ~ line 23 ~ url", url)
             file.url = url;
           })
           .catch(function (error) {
