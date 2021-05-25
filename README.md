@@ -34,46 +34,10 @@ module.exports = ({ env }) => ({
   upload: {
     provider: "uos",
     providerOptions: {
-      accessKeyId: env("ACCESS_KEY_ID"),
-      accessKeySecret: env("ACCESS_KEY_SECRET"),
-      region: env("REGION"),
-      bucket: env("BUCKET"),
-      uploadPath: env("UPLOAD_PATH"),
-      baseUrl: env("BASE_URL"),
-      timeout: env("TIMEOUT"),
+      baseUrl: env("TFS_UPLOAD_URL")
     },
   },
 });
 ```
 
-See below table for description of each provider option.
 
-### Strapi Beta or alpha
-
-The description for each fields to fill in strapi's configuration UI are as follows:
-
-| Field                                        | value       |
-| -------------------------------------------- | ----------- |
-| **AccessKeyId token**                        |             |
-| **AccessKeySecret token token**              |             |
-| **Region**                                   |             |
-| **Bucket**                                   | bucket name |
-| **Upload Path**                              |             |
-| **Base URL to access**                       |             |
-| **timeout**                                  |             |
-| **Automatically generate thumbnails** (Beta) |             |
-
-
-Example:
-
-# OSS Region reference
-
-# Troubleshooting
-
-<!-- Q: getting "The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint."
-
-A: Check if the OSS region is correct for the bucket you're using -->
-
-# Contribution
-
-<!-- This repo is maintained periodically, any contribution is highly welcomed -->
