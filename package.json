@@ -1,6 +1,6 @@
 {
   "name": "strapi-provider-upload-uos",
-  "version": "0.0.6",
+  "version": "0.0.1",
   "description": "Gooddoctor tfs(UOS) provider for strapi upload",
   "homepage": "http://strapi.io",
   "keywords": [
