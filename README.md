@@ -1,4 +1,4 @@
-# strapi-provider-upload-oss
+# strapi-provider-upload-uos
 
 A provider for strapi server to upload file to Gooddoctor UOS
 
